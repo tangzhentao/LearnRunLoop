@@ -8,6 +8,7 @@
 
 #import "ThreadViewController.h"
 #import "MyThread.h"
+#import <pthread.h>
 
 @interface ThreadViewController ()
 
@@ -66,6 +67,25 @@
 
 - (IBAction)startThreadWithRunLoop:(id)sender
 {
+    MyThread *thread = [[MyThread alloc] initWithTarget:self selector:@selector(runWithRunLoop) object:nil];
+    thread.name = @"run loop thread";
+    NSLog(@"%@: will start subthread<%@> ...", [NSThread currentThread], thread.name);
+    
+    
+    pthread_self();
+    [thread start];
+    
+    // 获取线程id
+    pthread_t pthread = pthread_self();
+    __uint64_t pid;
+    int result = pthread_threadid_np(pthread, &pid);
+    if (0 == result) {
+        NSLog(@"pid: %llu", pid);
+    } else
+    {
+        NSLog(@"error: %d", result);
+    }
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -90,6 +110,20 @@
         NSLog(@"<%@>: %d", [NSThread currentThread].name, i++);
         [NSThread sleepForTimeInterval:1];
     } while (1);
+}
+
+- (void)runWithRunLoop
+{
+    NSLog(@"<%@>: task begin ...", [NSThread currentThread].name);
+
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addPort:[NSMachPort port] forMode:NSRunLoopCommonModes];
+    
+    NSLog(@"runLoop: %@", runLoop);
+    
+    [runLoop run];
+    
+    NSLog(@"<%@>: task end.", [NSThread currentThread].name);
 }
 
 @end
