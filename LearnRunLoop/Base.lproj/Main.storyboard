@@ -18,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AEc-vF-f8a"/>
+                        <segue destination="Gf3-fD-czB" kind="relationship" relationship="rootViewController" id="noS-WT-GGP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uc-uF-2F3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1633" y="-51"/>
+            <point key="canvasLocation" x="-1247" y="-36"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -37,26 +37,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xy8-kT-0yp">
-                                <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
-                                <state key="normal" title="next"/>
-                                <connections>
-                                    <segue destination="Gf3-fD-czB" kind="show" id="Fuk-29-ujn"/>
-                                </connections>
-                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j62-xT-WtM">
+                                <rect key="frame" x="20" y="84" width="335" height="563"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Xy8-kT-0yp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Q9m-ql-due"/>
-                            <constraint firstItem="Xy8-kT-0yp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wRj-lN-m6O"/>
+                            <constraint firstItem="j62-xT-WtM" firstAttribute="top" secondItem="8x7-Hd-aFl" secondAttribute="bottom" constant="20" id="5na-We-o2g"/>
+                            <constraint firstItem="j62-xT-WtM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Eaw-xj-x7L"/>
+                            <constraint firstAttribute="trailing" secondItem="j62-xT-WtM" secondAttribute="trailing" constant="20" id="LLV-US-rrp"/>
+                            <constraint firstItem="hmq-CS-BS2" firstAttribute="top" secondItem="j62-xT-WtM" secondAttribute="bottom" constant="20" id="fY3-4h-VsE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Sz-8F-4pt"/>
+                    <connections>
+                        <outlet property="textView" destination="j62-xT-WtM" id="ewZ-3N-aQY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="yXq-GL-WKF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-750" y="-52"/>
+            <point key="canvasLocation" x="354" y="-36"/>
         </scene>
         <!--Thread View Controller-->
         <scene sceneID="yAF-dy-zq8">
@@ -71,14 +76,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-bR-leG">
-                                <rect key="frame" x="16" y="84" width="92" height="30"/>
+                                <rect key="frame" x="16" y="134" width="92" height="30"/>
                                 <state key="normal" title="开启一个线程"/>
                                 <connections>
                                     <action selector="startThread:" destination="Gf3-fD-czB" eventType="touchUpInside" id="gKf-Pj-14r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocX-Ys-w8H">
-                                <rect key="frame" x="16" y="234" width="164" height="30"/>
+                                <rect key="frame" x="16" y="284" width="164" height="30"/>
                                 <state key="normal" title="开启一个runloop 的线程"/>
                                 <connections>
                                     <action selector="startThreadWithRunLoop:" destination="Gf3-fD-czB" eventType="touchUpInside" id="23d-xO-9S8"/>
@@ -86,34 +91,51 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEr-hn-KLb">
-                                <rect key="frame" x="16" y="184" width="169" height="30"/>
+                                <rect key="frame" x="16" y="234" width="169" height="30"/>
                                 <state key="normal" title="开启一个无线循环的线程"/>
                                 <connections>
                                     <action selector="startThreadWithInfiniteLoop:" destination="Gf3-fD-czB" eventType="touchUpInside" id="Zt7-Um-0Wo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7R-yi-m6v">
-                                <rect key="frame" x="16" y="134" width="138" height="30"/>
+                                <rect key="frame" x="16" y="184" width="138" height="30"/>
                                 <state key="normal" title="保持并开启一个线程"/>
                                 <connections>
                                     <action selector="keepAndStartThread:" destination="Gf3-fD-czB" eventType="touchUpInside" id="VEk-mA-SZs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Gm-VsK">
-                                <rect key="frame" x="16" y="284" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="16" y="334" width="138" height="30"/>
+                                <state key="normal" title="线程收到消息后退出"/>
+                                <connections>
+                                    <action selector="startThreadReceivingMsg:" destination="Gf3-fD-czB" eventType="touchUpInside" id="WUk-W0-OqZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaU-Vj-Npm">
-                                <rect key="frame" x="16" y="334" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="16" y="384" width="138" height="30"/>
+                                <state key="normal" title="给线程发送延迟消息"/>
+                                <connections>
+                                    <action selector="startThreadWithDelayMsg:" destination="Gf3-fD-czB" eventType="touchUpInside" id="s9O-zF-9Dx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIf-Vw-v8P">
-                                <rect key="frame" x="16" y="384" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="16" y="434" width="207" height="30"/>
+                                <state key="normal" title="在子线程中切换RunLoopMode"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="b8C-7X-Upm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCp-Fr-Nca">
+                                <rect key="frame" x="28" y="84" width="92" height="30"/>
+                                <state key="normal" title="打印进程信息"/>
+                                <connections>
+                                    <action selector="printProcessInfo:" destination="Gf3-fD-czB" eventType="touchUpInside" id="waW-BB-UHr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="zmm-bR-leG" firstAttribute="top" secondItem="wCp-Fr-Nca" secondAttribute="bottom" constant="20" id="3Wh-ja-ThL"/>
                             <constraint firstItem="jEr-hn-KLb" firstAttribute="top" secondItem="Y7R-yi-m6v" secondAttribute="bottom" constant="20" id="3tY-El-gD9"/>
                             <constraint firstItem="ocX-Ys-w8H" firstAttribute="leading" secondItem="zmm-bR-leG" secondAttribute="leading" id="6XN-Lb-ZhU"/>
                             <constraint firstItem="Y7R-yi-m6v" firstAttribute="top" secondItem="zmm-bR-leG" secondAttribute="bottom" constant="20" id="Jpq-6d-z7r"/>
@@ -121,8 +143,9 @@
                             <constraint firstItem="jEr-hn-KLb" firstAttribute="leading" secondItem="zmm-bR-leG" secondAttribute="leading" id="Liy-v2-UBB"/>
                             <constraint firstItem="ocX-Ys-w8H" firstAttribute="top" secondItem="jEr-hn-KLb" secondAttribute="bottom" constant="20" id="Tnz-7f-lZy"/>
                             <constraint firstItem="VIf-Vw-v8P" firstAttribute="leading" secondItem="zmm-bR-leG" secondAttribute="leading" id="fs8-1n-Sd0"/>
+                            <constraint firstItem="wCp-Fr-Nca" firstAttribute="leading" secondItem="uS1-mg-SpO" secondAttribute="leadingMargin" constant="12" id="loB-SS-yiU"/>
                             <constraint firstItem="zmm-bR-leG" firstAttribute="leading" secondItem="uS1-mg-SpO" secondAttribute="leadingMargin" id="mhN-VI-VBr"/>
-                            <constraint firstItem="zmm-bR-leG" firstAttribute="top" secondItem="Bbs-cW-J9f" secondAttribute="bottom" constant="20" id="pwa-gT-2gn"/>
+                            <constraint firstItem="wCp-Fr-Nca" firstAttribute="top" secondItem="Bbs-cW-J9f" secondAttribute="bottom" constant="20" id="oUH-FN-HpI"/>
                             <constraint firstItem="DaU-Vj-Npm" firstAttribute="top" secondItem="f1c-Gm-VsK" secondAttribute="bottom" constant="20" id="q1q-JO-zdR"/>
                             <constraint firstItem="DaU-Vj-Npm" firstAttribute="leading" secondItem="zmm-bR-leG" secondAttribute="leading" id="v7k-Rs-D95"/>
                             <constraint firstItem="f1c-Gm-VsK" firstAttribute="leading" secondItem="zmm-bR-leG" secondAttribute="leading" id="wHF-zS-AYr"/>
@@ -130,10 +153,11 @@
                             <constraint firstItem="Y7R-yi-m6v" firstAttribute="leading" secondItem="zmm-bR-leG" secondAttribute="leading" id="za1-Yg-BJI"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bwe-C7-EaM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyX-jv-fHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="-53"/>
+            <point key="canvasLocation" x="-316" y="-36"/>
         </scene>
     </scenes>
 </document>
