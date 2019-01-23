@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString * name;
 
 - (void)print;
+- (void)printThreadInfo;
 
 @end
 
@@ -25,6 +26,14 @@
     NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
 }
 
+- (void)printThreadInfo
+{
+    NSThread *thread = [NSThread currentThread];
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    
+    NSLog(@"%@: %@", thread.name, runLoop.currentMode);
+}
+
 - (void)dealloc
 {
     NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
@@ -32,9 +41,11 @@
 
 @end
 
-@interface ViewController () <UIScrollViewDelegate>
+/*
+ 如果不手动停止run loop的话，会导致ViewController对象不能被释放。因为myThread保持了ViewController对象
+ */
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@interface ViewController ()
 
 @property (weak, nonatomic) MyThread *myThread;
 @property (strong, nonatomic) NSRunLoopMode runLoopMode;
@@ -50,12 +61,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.title = @"switch run loop mode";
     
-    self.textView.delegate = self;
-    
+    /*
+     如果不手动停止run loop的话，会导致ViewController对象不能被释放。因为myThread保持了ViewController对象
+     */
     MyThread *thread = [[MyThread alloc] initWithTarget:self selector:@selector(enableRunLoop) object:nil];
-    _myThread = thread;
+    self.myThread = thread;
     thread.name = @"my thread";
-    
+
     [thread start];
 }
 
@@ -75,8 +87,9 @@
     
     //    CFRunLoopAddCommonMode(CFRunLoopGetCurrent(), (CFStringRef)UITrackingRunLoopMode);
     
-    NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(printRunLoopMode) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:foo selector:@selector(printThreadInfo) userInfo:nil repeats:YES];
     self.timer = timer;
+    [runLoop addTimer:timer forMode:NSDefaultRunLoopMode];
     [runLoop addTimer:timer forMode:UITrackingRunLoopMode];
     
     _runLoopMode = NSDefaultRunLoopMode;// ;
@@ -96,8 +109,12 @@
 - (void)changeMyThreadRunLoopMode
 {
     NSRunLoopMode runLoopMode = [NSRunLoop currentRunLoop].currentMode;
-    NSLog(@"%@: current run loop mode: %@, will be change to %@", [NSThread currentThread].name, runLoopMode, mode);
-    self.runLoopMode = mode;
+    NSRunLoopMode newMode = UITrackingRunLoopMode;
+    if (runLoopMode == UITrackingRunLoopMode) {
+        newMode = NSDefaultRunLoopMode;
+    }
+    NSLog(@"%@: current run loop mode: %@, will be change to %@", [NSThread currentThread].name, runLoopMode, newMode);
+    self.runLoopMode = newMode;
 }
 
 - (void)printRunLoopMode
@@ -107,57 +124,31 @@
     
     NSLog(@"%@: %@", thread.name, runLoop.currentMode);
 }
+- (IBAction)stopRunLoopAction:(id)sender
+{
+    [self performSelector:@selector(stopRunLoop) onThread:self.myThread withObject:nil waitUntilDone:NO modes:@[NSDefaultRunLoopMode, UITrackingRunLoopMode]];
+}
+
+- (void)stopRunLoop
+{
+    NSThread *thread = [NSThread currentThread];
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    NSLog(@"%@[%@]: [%@ %@]", thread.name, runLoop.currentMode, [self class], NSStringFromSelector(_cmd));
+
+    self.shouldStopRunLoop = YES;
+    CFRunLoopRef currentRunLoop = CFRunLoopGetCurrent();
+    CFRunLoopStop( currentRunLoop );
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    
     NSLog(@"timer: %@", self.timer);
-//    static int count = 1;
-//    if (NSDefaultRunLoopMode == _runLoopMode) {
-//        _runLoopMode = UITrackingRunLoopMode;
-//    } else {
-//        _runLoopMode = NSDefaultRunLoopMode;
-//    }
-//    [self performSelector:@selector(printRunLoopMode) onThread:_myThread withObject:nil waitUntilDone:YES];
-//
-//    if (10 == count) {
-//        _shouldStopRunLoop = YES;
-//    }
-//    ++count;
-
+    [self performSelector:@selector(changeMyThreadRunLoopMode) onThread:self.myThread withObject:nil waitUntilDone:NO modes:@[NSDefaultRunLoopMode, UITrackingRunLoopMode]];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)dealloc
 {
     NSLog(@"[%@ %@]", [self class], NSStringFromSelector(_cmd));
-    if (self.runLoopMode != UITrackingRunLoopMode)
-    {
-        [self performSelector:@selector(changeMyThreadRunLoopMode) onThread:self.myThread withObject:nil waitUntilDone:NO];
-    }
 }
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    
-    //拖拽结束会调用这个方法，如果还有拖拽后的滑动动画就不做操作
-    if (!decelerate) {
-        //如果没有后续动画了就切换Mode为NSDefaultRunLoopMode
-        if (self.runLoopMode != NSDefaultRunLoopMode) {
-            //断点1
-            [self performSelector:@selector(changeSubThreadRunLoopMode:) onThread:self.myThread withObject:NSDefaultRunLoopMode waitUntilDone:NO];
-        }
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
-    //拖拽后的后续滑动动画结束（如果有才会到这，没有就不会到这个函数里面）
-    //也就是说上面那个函数如果切换了Mode就不会走这里，否则说明需要在这里切换Mode
-    //切换Mode为NSDefaultRunLoopMode
-    if (self.runLoopMode != NSDefaultRunLoopMode) {
-        //断点2
-        [self performSelector:@selector(changeSubThreadRunLoopMode:) onThread:self.myThread withObject:NSDefaultRunLoopMode waitUntilDone:NO];
-    }
-}
-
 
 @end
